@@ -1,0 +1,34 @@
+<div fxLayoutAlign="center" class="card-margin">
+  <mat-card fxFlex="50%">
+    <mat-card-header>
+      <mat-card-title>Registration Form</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="registerFrom" (ngSubmit)="OnRegister()">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Email" formControlName="email">
+          <mat-error *ngIf="hasError('email', 'required')">Email is required</mat-error>
+          <!-- <mat-error *ngIf="hasError('email', 'email')">Email Not Valid</mat-error> -->
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="password" formControlName="password">
+          <mat-error *ngIf="hasError('password', 'required')">Password is required</mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="confirm password" formControlName="confirmPassword">
+          <mat-error *ngIf="hasError('confirmPassword', 'required')">Confirm password is required</mat-error>
+          <mat-error *ngIf="!validator">Password not match</mat-error>
+        </mat-form-field>
+        <div>
+          <section class="example-section" formArrayName="orders" *ngFor="let item of orders; let i=index">
+            <mat-checkbox value="{{item.value}}" formControlName="{{i}}">{{item.name}}</mat-checkbox>
+          </section>
+          <div *ngIf="!registerFrom.valid" class="warn">At least Five order must be selected</div>
+        </div>
+        <div fxLayoutAlign="center">
+          <button mat-button class="btn-reg" type="submit" [disabled]="!registerFrom.valid">Register</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

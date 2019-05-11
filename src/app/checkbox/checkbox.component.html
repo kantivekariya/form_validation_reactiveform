@@ -1,0 +1,22 @@
+<div fxLayoutAlign="center" class="card-margin">
+  <mat-card fxFlex="50%">
+    <mat-card-header>
+      <mat-card-title>CheckBox Form</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="checkboxForm" (ngSubmit)="onSubmit()">
+        <div>
+          <section class="example-section" formArrayName="orders" *ngFor="let item of orders;let i=index">
+            <mat-checkbox value="{{item.value}}" [checked]="item.checked" (change)="onChange($event, i, item)" formControlName="{{i}}">{{item.name}}</mat-checkbox>
+          </section>
+          <div *ngIf="!checkboxForm.valid">At least five order must be selected</div>
+        </div>
+        <div>
+          <button mat-raised-button color="primary" [disabled]="!checkboxForm.valid">submit</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
