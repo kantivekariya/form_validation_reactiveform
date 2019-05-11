@@ -4,10 +4,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 #This project was using angular material and creating form validation using reactive form and also this form validate using checkbox at list minimum five checkbox check than after form validate.
 
-##clone the repository
+## clone the repository
 `https://github.com/kantivekariya/form_validation_reactiveform.git`
 
-##Running the Application
+## Running the Application
    Install the Angular CLI
   
   1)npm install -g @angular/cli
